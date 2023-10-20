@@ -1,8 +1,8 @@
 package com.itsrdb.productservice;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itsrdb.productservice.dto.ProductRequest;
+import com.itsrdb.productservice.model.Product;
 import com.itsrdb.productservice.repository.ProductRespository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -42,7 +42,7 @@ class ProductServiceApplicationTests {
 	@Test
 	void shouldCreateProduct() throws Exception {
 		productRespository.deleteAll();
-		ProductRequest productRequest = getProductRequest();
+		ProductRequest productRequest = getTestProductRequest();
 		String testProductRequest = objectMapper.writeValueAsString(productRequest);
 		mockMvc.perform(MockMvcRequestBuilders.post("/api/product")
 					.contentType(MediaType.APPLICATION_JSON)
@@ -51,7 +51,17 @@ class ProductServiceApplicationTests {
         Assertions.assertEquals(1, productRespository.findAll().size());
 	}
 
-	private ProductRequest getProductRequest() {
+	@Test
+	void shouldGetProduct() throws Exception {
+		productRespository.deleteAll();
+		Product testProduct = getTestProduct();
+		productRespository.save(testProduct);
+		mockMvc.perform(MockMvcRequestBuilders.get("/api/product"))
+				.andExpect(status().isOk());
+		Assertions.assertEquals(1, productRespository.findAll().size());
+	}
+
+	private ProductRequest getTestProductRequest() {
 		return ProductRequest.builder()
 				.name("Pixel 7 Test")
 				.description("Google Pixel 7")
@@ -59,4 +69,11 @@ class ProductServiceApplicationTests {
 				.build();
 	}
 
+	private Product getTestProduct() {
+		return Product.builder()
+				.name("Pixel 7 Test")
+				.description("Google Pixel 7")
+				.price(BigDecimal.valueOf(60000))
+				.build();
+	}
 }
