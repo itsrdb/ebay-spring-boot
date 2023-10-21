@@ -1,7 +1,11 @@
 package com.itsrdb.inventoryservice;
 
+import com.itsrdb.inventoryservice.model.Inventory;
+import com.itsrdb.inventoryservice.repository.InventoryRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class InventoryServiceApplication {
