@@ -51,6 +51,8 @@ public class OrderService {
 
         if(areProductInStock) {
             orderRepository.save(order);
+
+            // TODO: Add method to reduce inventory stock on placing order
         } else {
             throw new IllegalArgumentException("Product is not in stock, please try again later");
         }
