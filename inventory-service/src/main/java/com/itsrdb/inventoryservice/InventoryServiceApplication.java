@@ -1,14 +1,15 @@
 package com.itsrdb.inventoryservice;
 
-import com.itsrdb.inventoryservice.dto.InventoryResponse;
 import com.itsrdb.inventoryservice.model.Inventory;
 import com.itsrdb.inventoryservice.repository.InventoryRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@EnableDiscoveryClient
 public class InventoryServiceApplication {
 
 	public static void main(String[] args) {
