@@ -14,7 +14,8 @@ This project in currently in work and more features will be added in the future.
 > [!NOTE]
 > <b> Requires API Platform Authentication Token </b> <br>
 > You will need an authentical token configured in Postman (or any API Platform) by KeyCloak Client on your new Docker session. <br> 
-> <b>More info:</b> https://www.keycloak.org/getting-started/getting-started-docker
+> <b>More info:</b> https://www.keycloak.org/getting-started/getting-started-docker 
+<br>
 
 ## API End-Points
 <b>1. API GateWay :-</b> `localhost:8080/`
